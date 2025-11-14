@@ -1,0 +1,34 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package reportepdffinal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class ConexionDB {
+
+   
+    private static final String URL = "jdbc:mysql://localhost:3306/tallerfinal";
+    private static final String USUARIO = "root"; 
+    private static final String CONTRASENA = "Alejandr080507080507080507$"; 
+   
+
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            // Cargar el driver de MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Establecer la conexión
+            con = DriverManager.getConnection(URL, USUARIO, CONTRASENA);
+            System.out.println("¡Conexión a la base de datos exitosa!");
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error al conectar a la base de datos:");
+            e.printStackTrace();
+        }
+        return con;
+    }
+}
